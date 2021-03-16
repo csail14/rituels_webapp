@@ -1,6 +1,15 @@
 .App {
   text-align: center;
+  background-image: url('./assets/rituals-background.jpg');
+  min-height: 100vh;
+  
 }
+.react-player {
+  margin:auto
+}
+
+
+
 
 .App-logo {
   height: 40vmin;
@@ -11,6 +20,100 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+}
+
+.header {
+  height:100px;
+}
+
+.liste1 {
+  display: flex;
+  flex-direction: row;
+  color: white;
+  justify-content: center;
+}
+.title {
+  color:#FFBD2F;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.presentation {
+  color:#FFBD2F;
+  font-size: 20px;
+}
+.b-form {
+  flex-direction: column;
+  text-align: center;
+  width: 50%;
+  margin: auto;
+  border: 2px solid #FFBD2F;
+  border-radius: 12px;
+  padding: 10px 2% 20px 2%;
+}
+.b-form-admin {
+  flex-direction: column;
+  text-align: center;
+  width: 50%;
+  margin: auto;
+  border-radius: 12px;
+  padding: 10px 2% 20px 2%;
+}
+
+.select {
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.select select {
+  border:none;
+  border-radius: 10%;
+  margin-left: 5px;
+  margin-right: 30px;
+}
+
+.table {
+  color:white;
+  margin: auto;
+}
+
+.table 
+td {
+    border: 1px solid white;
+    padding: 5px;
+}
+
+.b-form input {
+  font-family: 'Fjalla One', cursive;
+  display: block;
+  width: 87%;
+  margin: auto;
+  margin-top: 10px;
+  height: 32px;
+  border-radius: 12px;
+  border: 1px solid #c4c3c2;
+  padding-left: 3%;
+  outline: none;
+}
+.b-form-admin input  {
+  font-family: 'Fjalla One', cursive;
+  display: block;
+  width: 50%;
+  margin: auto;
+  margin-top: 10px;
+  height: 32px;
+  border-radius: 12px;
+  border: 1px solid #c4c3c2;
+  padding-left: 3%;
+  outline: none;
+}
+
+.liste1 a {
+  color:white;
+  padding:50px;
+  font-size: 20px;
 }
 
 .App-header {
@@ -35,4 +138,8 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.age {
+  width: 50px;
 }
