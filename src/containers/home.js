@@ -16,15 +16,15 @@ class Home extends React.Component{
             <div className='Main'>
               <p className="title">Bienvenue sur le site de l'application 4b</p>
               <div className='player-wrapper'>
-        <ReactPlayer
-          className='react-player'
-          url={video1}
-          controls={true}
-          playing={true}
-          width='80%'
-          height='50%'
-        />
-      </div>
+                <ReactPlayer
+                className='react-player'
+                url={video1}
+                controls={true}
+                playing={true}
+                width='80%'
+                height='50%'
+                />
+            </div>
             </div>
         )
     }
