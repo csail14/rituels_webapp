@@ -4,6 +4,9 @@ import {connect} from 'react-redux';
 import Login from './login';
 import PhotosUploader from '../component/uploadVideo'
 import {addCycle} from '../api/videoApi'
+import { isDOMComponentElement } from 'react-dom/test-utils';
+import {loadThemeInfo} from '../actions/theme/themeActions';
+import {getAllTheme} from '../api/themeApi'
 
 const url = "https://api.cloudinary.com/v1_1/demo/image/upload";
 const form = document.querySelector("form");
@@ -19,18 +22,33 @@ class Admin extends React.Component{
             age_max:"",
             lang:"FR",
             type:"normal",
+            step:11,
             video:[null,null,null,null,null,null,null,null,null,null,null],
             error: null
         }
     }
+    componentDidMount=() =>{
+        if(this.props.theme.allTheme.length==0){
+            getAllTheme().then((res)=>{this.props.loadThemeInfo(res.result)})
+        }
+    }
+    componentDidUpdate = ()=>{
+        if(this.state.video.length!=this.state.step){
 
-      
+        let arr =[]
+        
+             for (let i=0;i<this.state.step;i++){
+             arr.push(null)
+             }
+             this.setState({video:arr})
+        }
+    }
     onSubmitForm = (e)=>{
         e.preventDefault();
         let data = {
             name: this.state.name,
             duration: this.state.duration,
-            theme:0,
+            theme_id:this.state.category,
             age_min:this.state.age_min,
             age_max:this.state.age_max,
             lang:this.state.lang,
@@ -38,7 +56,6 @@ class Admin extends React.Component{
             video:JSON.stringify(this.state.video)
         }
         
-        console.log('data',data)
         if (this.state.video.indexOf(null)==-1){
             addCycle(data).then(
                 (res)=>{
@@ -62,7 +79,7 @@ class Admin extends React.Component{
     }
 
     render() {
-        console.log(this.state.video)
+        console.log('state',this.state)
         
         return(
             
@@ -86,11 +103,12 @@ class Admin extends React.Component{
                     />
                     <div className="select">
                         <p className="presentation" >Catégorie : </p>
-                    <select value={this.state.category} onChange={(e)=>this.setState({category:e.currentTarget.value})}>
-                        <option value="cat1">Catégorie 1</option>
-                        <option value="cat2">Catégorie 2</option>
-                        <option value="cat3">Catégorie 3</option>
-                        <option value="cat4">Catégorie 4</option>
+                    <select value={this.state.category} onChange={(e)=>{
+                        this.setState({category:e.currentTarget.value,step:this.props.theme.allTheme.filter(item=>item.id==e.currentTarget.value)[0].step})}
+                        }>
+                        {this.props.theme.allTheme.map((item)=>{
+                            return(<option value={item.id}>{item.name}</option>)
+                        })}                        
                     </select>
                    
                         <p className="presentation" >Langue : </p>
@@ -159,12 +177,13 @@ class Admin extends React.Component{
 }
 
 const mapDispatchToProps = {
-    
+    loadThemeInfo
 }
 
 const mapStateToProps = (store)=>{
     return {
-        user: store.user
+        user: store.user,
+        theme:store.theme
     }
 }
 

@@ -12,18 +12,15 @@ class Header extends React.Component{
 
     render() {
         return(
-            <header className='header'>
+            <header className='footer'>
                 <nav>
-                    <div className='liste1'>
+                    
                         
-                        <Link to="/home">Acceuil</Link>
-                        <Link to="/presentation">Présentation</Link>
-                        <Link to="/pack">Pack</Link>
-                        <Link to="/contact">Contact</Link>
-                        <Link to="/admin">Admin</Link>
+                        <Link className='cgu' to="/condition">CGU</Link>
+                      
 
-                        {this.props.user.isLogged &&<Link to="/Logout">Se deconnecter</Link> }
-                    </div>
+                   
+                
                 </nav>
                
             </header>

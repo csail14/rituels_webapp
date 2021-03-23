@@ -12,3 +12,13 @@ export const loginUser = (data)=>{
 
             })
 }
+
+export const  sendContactMessage =  (data)=>{
+    return axios.post(config.api_url+"/api/v1/user/contact", data)
+            .then((response)=>{
+                return response.data;
+            })
+            .catch((err)=>{
+                return err;
+            })
+}

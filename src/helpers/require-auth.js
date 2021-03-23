@@ -4,6 +4,8 @@ import {config} from '../config';
 import axios from 'axios';
 import {connect} from 'react-redux';
 import {loadUserInfo} from '../actions/user/userActions';
+import {loadThemeInfo} from '../actions/theme/themeActions';
+import {getAllTheme} from '../api/themeApi'
 
 
 export default function(ChildComponent, withAuth = false) {
@@ -14,6 +16,12 @@ export default function(ChildComponent, withAuth = false) {
             this.state = {
                 redirect: false,
                 redirectNoAdmin:false
+            }
+        }
+        componentDidMount=() =>{
+            console.log('ici')
+            if(this.props.theme.allTheme.length==0){
+                getAllTheme().then((res)=>{this.props.loadThemeInfo(res.result)})
             }
         }
         
@@ -45,7 +53,7 @@ export default function(ChildComponent, withAuth = false) {
         }
         
         render() {
-            if(this.state.redirect) {
+        if(this.state.redirect) {
                 return <Redirect to="/login" />
             }
             if(this.state.redirectNoAdmin){
