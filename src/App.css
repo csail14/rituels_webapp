@@ -69,6 +69,19 @@
   color:white;
   font-size: 30px;
   font-weight: bold;
+
+}
+
+.logo {
+  height: 80px;
+  position: absolute;
+  right: 20px;
+ top: 10px;
+}
+
+.text {
+  color:white;
+  font-size: 20px;
 }
 .packDiv{
   display: flex;

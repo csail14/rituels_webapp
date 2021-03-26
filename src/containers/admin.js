@@ -103,13 +103,13 @@ class Admin extends React.Component{
                     />
                     <div className="select">
                         <p className="presentation" >Catégorie : </p>
-                    <select value={this.state.category} onChange={(e)=>{
+                    {this.props.theme.allTheme &&<select value={this.state.category} onChange={(e)=>{
                         this.setState({category:e.currentTarget.value,step:this.props.theme.allTheme.filter(item=>item.id==e.currentTarget.value)[0].step})}
                         }>
                         {this.props.theme.allTheme.map((item)=>{
                             return(<option value={item.id}>{item.name}</option>)
                         })}                        
-                    </select>
+                    </select>}
                    
                         <p className="presentation" >Langue : </p>
                     <select value={this.state.lang} onChange={(e)=>this.setState({lang:e.currentTarget.value})}>

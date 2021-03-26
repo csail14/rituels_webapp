@@ -7,6 +7,8 @@ import Footer from './containers/footer';
 import Admin from './containers/admin'
 import RequireAuth from './helpers/require-auth';
 import Login from './containers/login'
+import Forgot from './containers/forgotPassword'
+import Validate from './containers/validateAccount'
 import Contact from './containers/contact';
 import Presentation from './containers/presentation'
 import Logout from './containers/logout'
@@ -24,6 +26,8 @@ function App() {
         <Route exact path="/" component={Home} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/pack" component={Pack} />
+          <Route exact path="/changePassword/:key_id" component={Forgot} />
+          <Route exact path="/validate/:key_id" component={Validate} />
           <Route exact path="/condition" component={Condition} />
           <Route exact path="/presentation" component={Presentation} />
           <Route exact path="/contact" component={Contact} />

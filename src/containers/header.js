@@ -1,6 +1,7 @@
 import React from 'react'
 import {Link} from 'react-router-dom';
 import {connect} from 'react-redux';
+import logo from '../assets/logo.png'
 
 
 
@@ -23,6 +24,7 @@ class Header extends React.Component{
                         <Link to="/admin">Admin</Link>
 
                         {this.props.user.isLogged &&<Link to="/Logout">Se deconnecter</Link> }
+                        <img className='logo' src={logo}/>
                     </div>
                 </nav>
                
