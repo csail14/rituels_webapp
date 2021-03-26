@@ -5,6 +5,7 @@ const initialState = {
 }
 
 const ThemeReducer = (state = initialState, action)=>{
+    console.log('theme reducer', action.payload)
     switch(action.type) {
         case LOAD_THEME_INFO:
             return {allTheme : action.payload}    
