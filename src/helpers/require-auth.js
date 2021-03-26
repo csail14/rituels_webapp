@@ -21,7 +21,9 @@ export default function(ChildComponent, withAuth = false) {
         componentDidMount=() =>{
             console.log('ici')
             if(this.props.theme.allTheme.length==0){
-                getAllTheme().then((res)=>{this.props.loadThemeInfo(res.result)})
+                getAllTheme().then((res)=>{
+                    console.log('res',res)
+                    this.props.loadThemeInfo(res.result)})
             }
         }
         
