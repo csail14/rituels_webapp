@@ -15,7 +15,9 @@ class Home extends React.Component{
     }
     componentDidMount=() =>{
         if(this.props.theme.allTheme &&this.props.theme.allTheme.length==0){
-            getAllTheme().then((res)=>{this.props.loadThemeInfo(res.result)})
+            getAllTheme().then((res)=>{
+                console.log('res',res)
+                this.props.loadThemeInfo(res.result)})
         }
     }
 
