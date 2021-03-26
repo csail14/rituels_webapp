@@ -23,16 +23,16 @@ function App() {
       <div className="App">
         <Header/>
         <Switch>
-        <Route exact path="/" component={Home} />
-          <Route exact path="/home" component={Home} />
-          <Route exact path="/pack" component={Pack} />
+        <Route exact path="/" component={RequireAuth(Home)} />
+          <Route exact path="/home" component={RequireAuth(Home)} />
+          <Route exact path="/pack" component={RequireAuth(Pack)} />
           <Route exact path="/changePassword/:key_id" component={Forgot} />
           <Route exact path="/validate/:key_id" component={Validate} />
           <Route exact path="/condition" component={Condition} />
-          <Route exact path="/presentation" component={Presentation} />
-          <Route exact path="/contact" component={Contact} />
+          <Route exact path="/presentation" component={RequireAuth(Presentation)} />
+          <Route exact path="/contact" component={RequireAuth(Contact)} />
           <Route exact path="/non-authorize" component={NonAuth} />
-          <Route exact path="/login" component={Login} />
+          <Route exact path="/login" component={RequireAuth(Login)} />
           <Route exact path="/logout" component={Logout} />
           <Route exact path="/admin" component={RequireAuth(Admin,true)} />
           
