@@ -12,7 +12,7 @@ import {validateUser} from '../api/userApi'
 class Forgot extends React.Component{
     constructor(props){
         super(props)
-        state={
+        this.state={
             validate:false
         }
     }
@@ -23,7 +23,7 @@ class Forgot extends React.Component{
             <div className='main'>
                 <p className='title'>Validation de votre compte</p>
                 <p className='text'>Bienvenu sur l'application 4b</p>
-                {!validate&&<p className='text'>Pour valider votre mail, cliquez 
+                {!this.state.validate&&<p className='text'>Pour valider votre mail, cliquez 
                 <button 
                 onClick={()=>{
                     validateUser(this.props.match.params.key_id).then((res)=>{
@@ -32,7 +32,7 @@ class Forgot extends React.Component{
                         }
                     })
                 }}>ici</button></p>}
-                {validate&&<p className='text'>Votre mail a bien été validé. Rendez vous sur l'application pour vous connecter.</p>}
+                {this.state.validate&&<p className='text'>Votre mail a bien été validé. Rendez vous sur l'application pour vous connecter.</p>}
             </div>
         )
     }
