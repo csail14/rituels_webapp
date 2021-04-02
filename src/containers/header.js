@@ -16,15 +16,17 @@ class Header extends React.Component{
             <header className='header'>
                 <nav>
                     <div className='liste1'>
-                        
-                        <Link to="/home">Acceuil</Link>
+                    <img className='logo' src={logo}/>
+                        <Link to="/home">Accueil</Link>
                         <Link to="/presentation">Présentation</Link>
                         <Link to="/pack">Pack</Link>
                         <Link to="/contact">Contact</Link>
+                        <Link to="/account">Mon compte</Link>
                         <Link to="/admin">Admin</Link>
 
+
                         {this.props.user.isLogged &&<Link to="/Logout">Se deconnecter</Link> }
-                        <img className='logo' src={logo}/>
+                       
                     </div>
                 </nav>
                

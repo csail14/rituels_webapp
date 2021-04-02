@@ -14,6 +14,7 @@ import Presentation from './containers/presentation'
 import Logout from './containers/logout'
 import NonAuth from './containers/nonAuth'
 import Pack from './containers/pack'
+import Account from './containers/myaccount'
 import Condition from './containers/condition'
 import { CloudinaryContext } from "cloudinary-react";
 
@@ -34,6 +35,7 @@ function App() {
           <Route exact path="/non-authorize" component={NonAuth} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/logout" component={Logout} />
+          <Route exact path="/account" component={RequireAuth(Account,true)} />
           <Route exact path="/admin" component={RequireAuth(Admin,true)} />
           
         </Switch>
