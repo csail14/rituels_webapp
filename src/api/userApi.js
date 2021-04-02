@@ -22,3 +22,13 @@ export const  sendContactMessage =  (data)=>{
                 return err;
             })
 }
+
+export const  validateUser =  (key)=>{
+    return axios.get(config.api_url+"/api/v1/user/validate/"+key)
+            .then((response)=>{
+                return response.data;
+            })
+            .catch((err)=>{
+                return err;
+            })
+}
