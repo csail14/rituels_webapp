@@ -4,7 +4,6 @@
   background-position: 75%;
   background-size: cover;
   min-height: 100vh;
-  width: fit-content;
 }
 .react-player {
   margin: auto;
