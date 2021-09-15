@@ -1,17 +1,19 @@
-import {LOAD_THEME_INFO,LOGOUT_USER_INFO} from '../actions/theme/actions-type';
+import {
+  LOAD_THEME_INFO,
+  LOGOUT_USER_INFO,
+} from "../actions/theme/actions-type";
 
 const initialState = {
-    allTheme:[]
-}
+  allTheme: [],
+};
 
-const ThemeReducer = (state = initialState, action)=>{
-    console.log('theme reducer', action.payload)
-    switch(action.type) {
-        case LOAD_THEME_INFO:
-            return {allTheme : action.payload}    
-        break;
-    }
-    return state;
-}
+const ThemeReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case LOAD_THEME_INFO:
+      return { allTheme: action.payload };
+      break;
+  }
+  return state;
+};
 
 export default ThemeReducer;

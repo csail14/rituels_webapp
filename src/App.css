@@ -1,9 +1,8 @@
 .App {
   text-align: center;
   background-image: url("./assets/main-background.jpg");
-  background-position: 75%;
   background-size: cover;
-  min-height: 100vh;
+  min-height: 140vh;
 }
 .react-player {
   margin: auto;
@@ -35,9 +34,6 @@
   height: 200px;
   width: 200px;
   margin-top: 10%;
-
-  position: absolute;
-  left: 40%;
   font-size: 40px;
   background-color: #ff171b;
   border-color: #ff171b;
@@ -66,12 +62,21 @@
   font-size: 30px;
   font-weight: bold;
 }
+.condition {
+  color: white;
+}
+.player-wrapper {
+  display: flex;
+  flex-direction: row;
+}
 .buy-button {
   background-color: white;
   border: white;
   height: 40px;
   width: 200px;
   border-radius: 12px;
+  margin-top: 10px;
+  cursor: pointer;
 }
 .logo {
   height: 80px;
@@ -107,6 +112,7 @@
 .b-form {
   flex-direction: column;
   text-align: center;
+  min-width: 800px;
   width: 50%;
   margin: auto;
   border-radius: 12px;
@@ -172,10 +178,18 @@ textarea {
   outline: none;
 }
 
-.liste1 a {
+.liste1 .web {
   color: white;
-  padding: 50px;
+  padding: 50px 30px;
   font-size: 20px;
+}
+
+.mobile {
+  padding: 20px 50px;
+  color: white;
+  font-size: 30px;
+  background-color: grey;
+  z-index: 1;
 }
 
 .App-header {

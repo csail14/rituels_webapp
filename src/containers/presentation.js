@@ -1,44 +1,49 @@
-import React from 'react'
-import {Link} from 'react-router-dom';
-import {connect} from 'react-redux'; 
-import video1 from "../assets/video1.mp4";
-import ReactPlayer from 'react-player'
+import React from "react";
+import { connect } from "react-redux";
+import ReactPlayer from "react-player";
+import { getVideo } from "../api/videoApi";
+import { config } from "../config";
 
+class Presentation extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      video: "",
+    };
+  }
 
+  componentDidMount = () => {
+    getVideo(741).then((res) => {
+      if (res.status === 200) {
+        this.setState({ video: config.video_url + res.result[0].url });
+      } else {
+        console.log("error", res);
+      }
+    });
+  };
 
-class Presentation extends React.Component{
-    constructor(props){
-        super(props)
-        
-    }
-
-    render() {
-        
-        return(
-            <div className='main'>                
-                <ReactPlayer
-                className='react-player'
-                url={video1}
-                controls={true}
-                playing={true}
-                width='80%'
-                height='50%'
-                />  
-            </div>
-        )
-    }
-
-
+  render() {
+    return (
+      <div className="main">
+        <ReactPlayer
+          className="react-player"
+          url={this.state.video}
+          controls={true}
+          playing={true}
+          width="80%"
+          height="50%"
+        />
+      </div>
+    );
+  }
 }
 
-const mapDispatchToProps = {
-    
-}
+const mapDispatchToProps = {};
 
-const mapStateToProps = (store)=>{
-    return {
-        user: store.user
-    }
-}
+const mapStateToProps = (store) => {
+  return {
+    user: store.user,
+  };
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Presentation);
