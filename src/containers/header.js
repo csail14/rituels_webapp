@@ -9,6 +9,7 @@ import ListItemText from "@material-ui/core/ListItemText";
 import { withStyles } from "@material-ui/core/styles";
 import { isMobile } from "react-device-detect";
 import styled from "styled-components";
+import menu from "../assets/menu-burger.png";
 
 const StyledMenu = withStyles({
   paper: {
@@ -63,106 +64,109 @@ class Header extends React.Component {
   render() {
     return (
       <header className="header">
-        <nav>
-          <div className="liste1">
-            {isMobile ? (
+        {isMobile ? (
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <MobileHeader>
+              <Link className="web" style={{ padding: "0" }} to="/home">
+                <img className="logo-mobile" alt="logo" src={logo} />
+              </Link>
+
+              <img
+                onClick={() => {
+                  this.setState({ showMenu: !this.state.showMenu });
+                }}
+                alt="menu"
+                style={{
+                  height: "150px",
+                  marginTop: "10px",
+                  marginReft: "30px",
+                }}
+                src={menu}
+              ></img>
+            </MobileHeader>
+            {this.state.showMenu && (
               <div style={{ display: "flex", flexDirection: "column" }}>
-                <MobileHeader>
-                  <Link className="web" style={{ padding: "0" }} to="/home">
-                    <img className="logo" alt="logo" src={logo} />
-                  </Link>
-                  <div
+                <Link
+                  onClick={() => {
+                    this.setState({ showMenu: !this.state.showMenu });
+                  }}
+                  className="mobile-menu-link"
+                  to="/home"
+                >
+                  Accueil
+                </Link>
+                <Link
+                  onClick={() => {
+                    this.setState({ showMenu: !this.state.showMenu });
+                  }}
+                  className="mobile-menu-link"
+                  to="/presentation"
+                >
+                  Présentation
+                </Link>
+                <Link
+                  onClick={() => {
+                    this.setState({ showMenu: !this.state.showMenu });
+                  }}
+                  className="mobile-menu-link"
+                  to="/pack"
+                >
+                  Pack
+                </Link>
+                <Link
+                  onClick={() => {
+                    this.setState({ showMenu: !this.state.showMenu });
+                  }}
+                  className="mobile-menu-link"
+                  to="/warroom"
+                >
+                  Quartier Général
+                </Link>
+                <Link
+                  onClick={() => {
+                    this.setState({ showMenu: !this.state.showMenu });
+                  }}
+                  className="mobile-menu-link"
+                  to="/account"
+                >
+                  Mon Compte
+                </Link>
+                <Link
+                  onClick={() => {
+                    this.setState({ showMenu: !this.state.showMenu });
+                  }}
+                  className="mobile-menu-link"
+                  to="/contact"
+                >
+                  Contact
+                </Link>
+                {this.props.user.isLogged ? (
+                  <Link
                     onClick={() => {
                       this.setState({ showMenu: !this.state.showMenu });
                     }}
-                    style={{
-                      height: "60px",
-                      width: "60px",
-                      backgroundColor: "white",
+                    className="mobile-menu-link"
+                    to="/Logout"
+                  >
+                    Se déconnecter
+                  </Link>
+                ) : (
+                  <Link
+                    onClick={() => {
+                      this.setState({ showMenu: !this.state.showMenu });
                     }}
-                  ></div>
-                </MobileHeader>
-                {this.state.showMenu && (
-                  <div style={{ display: "flex", flexDirection: "column" }}>
-                    <Link
-                      onClick={() => {
-                        this.setState({ showMenu: !this.state.showMenu });
-                      }}
-                      className="mobile"
-                      to="/home"
-                    >
-                      Accueil
-                    </Link>
-                    <Link
-                      onClick={() => {
-                        this.setState({ showMenu: !this.state.showMenu });
-                      }}
-                      className="mobile"
-                      to="/presentation"
-                    >
-                      Présentation
-                    </Link>
-                    <Link
-                      onClick={() => {
-                        this.setState({ showMenu: !this.state.showMenu });
-                      }}
-                      className="mobile"
-                      to="/pack"
-                    >
-                      Pack
-                    </Link>
-                    <Link
-                      onClick={() => {
-                        this.setState({ showMenu: !this.state.showMenu });
-                      }}
-                      className="mobile"
-                      to="/warroom"
-                    >
-                      Quartier Général
-                    </Link>
-                    <Link
-                      onClick={() => {
-                        this.setState({ showMenu: !this.state.showMenu });
-                      }}
-                      className="mobile"
-                      to="/account"
-                    >
-                      Mon Compte
-                    </Link>
-                    <Link
-                      onClick={() => {
-                        this.setState({ showMenu: !this.state.showMenu });
-                      }}
-                      className="mobile"
-                      to="/contact"
-                    >
-                      Contact
-                    </Link>
-                    {this.props.user.isLogged ? (
-                      <Link
-                        onClick={() => {
-                          this.setState({ showMenu: !this.state.showMenu });
-                        }}
-                        className="mobile"
-                        to="/Logout"
-                      >
-                        Se déconnecter
-                      </Link>
-                    ) : (
-                      <Link
-                        onClick={() => {
-                          this.setState({ showMenu: !this.state.showMenu });
-                        }}
-                        className="mobile"
-                        to="/register"
-                      >
-                        S'inscrire
-                      </Link>
-                    )}
-                  </div>
+                    className="mobile-menu-link"
+                    to="/register"
+                  >
+                    S'inscrire
+                  </Link>
                 )}
               </div>
-            ) : (
+            )}
+          </div>
+        ) : (
+          <nav>
+            <div className="liste1">
               <>
                 <Link className="web" style={{ padding: "0" }} to="/home">
                   <img className="logo" alt="logo" src={logo} />
@@ -195,9 +199,9 @@ class Header extends React.Component {
                   </Link>
                 )}
               </>
-            )}
-          </div>
-        </nav>
+            </div>
+          </nav>
+        )}
       </header>
     );
   }

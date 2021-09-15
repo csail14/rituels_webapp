@@ -9,6 +9,7 @@ import androidStore from "../assets/android-app-store.png";
 import { getTextById } from "../api/textApi";
 import DOMPurify from "dompurify";
 import TextEditor from "../component/textEditor";
+import { isMobile } from "react-device-detect";
 
 const GoToQG = styled.div`
   display: flex;
@@ -16,12 +17,14 @@ const GoToQG = styled.div`
   justify-content: center;
   align-items: center;
   padding: 20px;
-  height: 40px;
-  width: 40px;
+  height: ${isMobile ? "60px" : "40px"};
+  width: ${isMobile ? "60px" : "40px"};
   background-color: yellow;
   border-radius: 50%;
   position: absolute;
-  bottom: 10px;
+  font-size: ${isMobile ? "40px" : "20px"};
+  bottom: ${isMobile ? "" : "10px"};
+  top: ${isMobile ? "550px" : ""};
   left: 10px;
   cursor: pointer;
 `;
@@ -32,9 +35,20 @@ const SquareInfoContainerLeft = styled.div`
   top: 100px;
 `;
 
+const GoButton = styled.div`
+  height: ${isMobile ? "400px" : "200px"};
+  width:${isMobile ? "400px" : "200px"};
+  margin-top: 10%;
+  font-size: ${isMobile ? "60px" : "40px"};
+  background-color: #ff171b;
+  border-color: #ff171b;
+  border-radius: 50%;
+  position: ${isMobile ? "absolute" : ""};
+  margin ${isMobile ? "0 28%" : ""};
+`;
 const Title = styled.div`
   font-weight: 700;
-  font-size: 20px;
+  font-size: ${isMobile ? "50px" : "20px;"};
   text-decoration: underline;
   text-align: center;
   padding-top: 5px;
@@ -42,7 +56,8 @@ const Title = styled.div`
 
 const FreeTrialContainer = styled.div`
   color: white;
-  font-size: 22px;
+  font-size: ${isMobile ? "40px" : "22px"};
+  margin-top: ${isMobile ? "500px" : ""};
 `;
 
 const SquareInfoContainerRight = styled.div``;
@@ -52,13 +67,15 @@ const SquareInfoContainerBottom = styled.div``;
 const SquareInfoTop = styled.div`
   display: flex;
   justify-content: space-between;
+  flex-direction: ${isMobile ? "column" : ""};
+  margin-top: ${isMobile ? "100px" : ""};
 `;
 const SquareInfo = styled.div`
   color: white;
   border: 1px solid white;
   border-radius: 12px;
   text-align: left;
-  max-width: 500px;
+  max-width: ${isMobile ? "" : "500px"};
   margin: 30px;
   background-color: rgba(255, 255, 255, 0.5);
 `;
@@ -68,7 +85,7 @@ const SquareInfoBottom = styled.div`
   border: 1px solid white;
   border-radius: 12px;
   text-align: left;
-  margin: 50px 100px;
+  margin: ${isMobile ? "50px 30px" : "50px 100px"};
 
   background-color: rgba(255, 255, 255, 0.5);
 `;
@@ -89,6 +106,8 @@ const createMarkup = (html) => {
     __html: DOMPurify.sanitize(html),
   };
 };
+
+console.log("isMobile", isMobile);
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -172,7 +191,18 @@ class Home extends React.Component {
         <div>
           <SquareInfoTop>
             <SquareInfoContainerLeft>
-              <SquareInfo style={{ marginBottom: "45px" }}>
+              {isMobile && (
+                <FreeTrialContainer>
+                  <Link style={{ color: "white" }} to="/register">
+                    Commencez ici votre essai gratuit de 7 jours
+                  </Link>
+                </FreeTrialContainer>
+              )}
+              <SquareInfo
+                style={{
+                  marginBottom: "45px",
+                }}
+              >
                 <Title>Efficacité</Title>
                 {this.state.isEditingBloc1 ? (
                   <TextEditor
@@ -217,11 +247,11 @@ class Home extends React.Component {
                   )}
               </SquareInfo>
             </SquareInfoContainerLeft>
-            <div className="GoButton">
+            <GoButton>
               <Link to="/presentation" className="Go">
                 Let's go !
               </Link>
-            </div>
+            </GoButton>
 
             <SquareInfoContainerRight>
               <SquareInfo>
@@ -271,11 +301,13 @@ class Home extends React.Component {
               </SquareInfo>
             </SquareInfoContainerRight>
           </SquareInfoTop>
-          <FreeTrialContainer>
-            <Link style={{ color: "white" }} to="/register">
-              Commencez ici votre essai gratuit de 7 jours
-            </Link>
-          </FreeTrialContainer>
+          {!isMobile && (
+            <FreeTrialContainer>
+              <Link style={{ color: "white" }} to="/register">
+                Commencez ici votre essai gratuit de 7 jours
+              </Link>
+            </FreeTrialContainer>
+          )}
           <SquareInfoContainerBottom>
             <SquareInfoBottom>
               {this.state.isEditingBloc5 ? (

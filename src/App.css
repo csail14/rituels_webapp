@@ -30,15 +30,6 @@
   right: 10px;
 }
 
-.GoButton {
-  height: 200px;
-  width: 200px;
-  margin-top: 10%;
-  font-size: 40px;
-  background-color: #ff171b;
-  border-color: #ff171b;
-  border-radius: 50%;
-}
 .Go {
   color: white;
   position: relative;
@@ -80,6 +71,12 @@
 }
 .logo {
   height: 80px;
+  /*position: absolute;*/
+  margin-left: 20px;
+  margin-top: 20px;
+}
+.logo-mobile {
+  height: 150px;
   /*position: absolute;*/
   margin-left: 20px;
   margin-top: 20px;
@@ -184,10 +181,11 @@ textarea {
   font-size: 20px;
 }
 
-.mobile {
-  padding: 20px 50px;
+.mobile-menu-link {
+  padding: 30px 50px;
   color: white;
-  font-size: 30px;
+  font-size: 40px;
+  border: solid black 2px;
   background-color: grey;
   z-index: 1;
 }
