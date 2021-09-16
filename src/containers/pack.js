@@ -7,26 +7,25 @@ import TextEditor from "../component/textEditor";
 import { isMobile } from "react-device-detect";
 
 const SquareInfoTop = styled.div`
-  padding: 12px;
+  padding: ${isMobile ? "30px" : "12px"};
   color: white;
   border: 1px solid white;
   border-radius: 12px;
   text-align: left;
-  margin: 50px 100px;
-
+  margin: ${isMobile ? "80px" : "50px"} 100px;
   background-color: rgba(255, 255, 255, 0.5);
 `;
 
 const Title = styled.div`
   font-weight: 700;
-  font-size: 20px;
+  font-size: ${isMobile ? "50px" : "20px"};
   text-decoration: underline;
   text-align: center;
   padding-top: 5px;
 `;
 const Subtitle = styled.div`
   font-weight: 700;
-  font-size: 16px;
+  font-size: ${isMobile ? "40px" : "16px"};
 
   text-align: center;
   padding-top: 5px;
@@ -36,10 +35,11 @@ const SquareInfo = styled.div`
   border: 1px solid white;
   border-radius: 12px;
   text-align: left;
-  max-width: 500px;
+  max-width: ${isMobile ? "" : "500px"};
   margin: 30px;
+  margin: ${isMobile ? "0 100px" : ""};
   background-color: rgba(255, 255, 255, 0.5);
-  padding: 10px;
+  padding: ${isMobile ? "30px" : "10px"};
 `;
 const EditButton = styled.div`
   padding: 20px;
@@ -51,6 +51,13 @@ const EditButton = styled.div`
   margin-bottom: 5px;
   border-radius: 12px;
   cursor: pointer;
+`;
+
+const PackDiv = styled.div`
+  display: ${isMobile ? "" : "flex"};
+  flex-direction: ${isMobile ? "column" : "row"};
+  justify-content: center;
+  padding-bottom: 30px;
 `;
 const createMarkup = (html) => {
   return {
@@ -131,7 +138,7 @@ class Home extends React.Component {
               </EditButton>
             )}
         </SquareInfoTop>
-        <div className="packDiv">
+        <PackDiv>
           <SquareInfo style={{ marginBottom: "45px" }}>
             <Title>Pack Kids</Title>
             <Subtitle>3€ /mois</Subtitle>
@@ -178,7 +185,7 @@ class Home extends React.Component {
                 </EditButton>
               )}
           </SquareInfo>
-        </div>
+        </PackDiv>
       </div>
     );
   }

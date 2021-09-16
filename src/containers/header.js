@@ -78,8 +78,9 @@ class Header extends React.Component {
                 alt="menu"
                 style={{
                   height: "150px",
-                  marginTop: "10px",
+                  marginTop: "18px",
                   marginReft: "30px",
+                  paddingRight: "18px",
                 }}
                 src={menu}
               ></img>

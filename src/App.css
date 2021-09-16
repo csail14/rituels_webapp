@@ -86,11 +86,6 @@
   color: white;
   font-size: 20px;
 }
-.packDiv {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-}
 .pack {
   margin: 10px;
   border: 2px solid white;

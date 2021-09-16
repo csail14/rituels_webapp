@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { sendContactMessage } from "../api/userApi";
+import styled from "styled-components";
+import { isMobile } from "react-device-detect";
 
 class Contact extends React.Component {
   constructor(props) {
@@ -25,7 +27,7 @@ class Contact extends React.Component {
 
     if (this.state.message && this.state.email) {
       sendContactMessage(data).then((res) => {
-        if (res.status == 200) {
+        if (res.status === 200) {
           this.setState({ errorMessage: "Votre message a bien été envoyé." });
         } else {
           this.setState({
@@ -49,16 +51,25 @@ class Contact extends React.Component {
             {this.state.errorMessage}
           </p>
         )}
+
         <form
           className="b-form"
           onSubmit={(e) => {
             e.preventDefault();
             this.onSubmitForm(e);
           }}
+          style={{
+            width: isMobile ? "100%" : "",
+            paddingTop: isMobile ? "100px" : "",
+          }}
         >
           <input
             type="text"
             value={this.firstName}
+            style={{
+              height: isMobile ? "60px" : "",
+              fontSize: isMobile ? "35px" : "",
+            }}
             placeholder="Votre prénom"
             onChange={(e) => {
               this.setState({ firstName: e.currentTarget.value });
@@ -67,6 +78,10 @@ class Contact extends React.Component {
           <input
             type="text"
             value={this.lastName}
+            style={{
+              height: isMobile ? "60px" : "",
+              fontSize: isMobile ? "35px" : "",
+            }}
             placeholder="Votre nom"
             onChange={(e) => {
               this.setState({ lastName: e.currentTarget.value });
@@ -76,6 +91,10 @@ class Contact extends React.Component {
           <input
             type="text"
             placeholder="Votre mail"
+            style={{
+              height: isMobile ? "60px" : "",
+              fontSize: isMobile ? "35px" : "",
+            }}
             value={this.email}
             onChange={(e) => {
               this.setState({ email: e.currentTarget.value });
@@ -85,13 +104,25 @@ class Contact extends React.Component {
           <textarea
             type="text"
             placeholder="Votre message"
+            style={{
+              height: isMobile ? "200px" : "",
+              fontSize: isMobile ? "35px" : "",
+            }}
             value={this.message}
             onChange={(e) => {
               this.setState({ message: e.currentTarget.value });
             }}
           />
 
-          <input type="submit" value="Envoyer" name="Enregistrer" />
+          <input
+            style={{
+              height: isMobile ? "60px" : "",
+              fontSize: isMobile ? "35px" : "",
+            }}
+            type="submit"
+            value="Envoyer"
+            name="Enregistrer"
+          />
         </form>
       </div>
     );

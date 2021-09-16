@@ -248,7 +248,11 @@ class Home extends React.Component {
               </SquareInfo>
             </SquareInfoContainerLeft>
             <GoButton>
-              <Link to="/presentation" className="Go">
+              <Link
+                to="/presentation"
+                className="Go"
+                style={{ top: isMobile ? "40%" : "" }}
+              >
                 Let's go !
               </Link>
             </GoButton>

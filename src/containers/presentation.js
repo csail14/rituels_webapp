@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import ReactPlayer from "react-player";
 import { getVideo } from "../api/videoApi";
 import { config } from "../config";
+import { isMobile } from "react-device-detect";
 
 class Presentation extends React.Component {
   constructor(props) {
@@ -23,8 +24,9 @@ class Presentation extends React.Component {
   };
 
   render() {
+    console.log(this.state.video);
     return (
-      <div className="main">
+      <div className="main" style={{ paddingTop: isMobile ? "100px" : "" }}>
         <ReactPlayer
           className="react-player"
           url={this.state.video}
