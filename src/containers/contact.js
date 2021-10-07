@@ -59,7 +59,7 @@ class Contact extends React.Component {
             this.onSubmitForm(e);
           }}
           style={{
-            width: isMobile ? "100%" : "",
+            width: isMobile ? "80%" : "",
             paddingTop: isMobile ? "100px" : "",
           }}
         >
@@ -69,6 +69,7 @@ class Contact extends React.Component {
             style={{
               height: isMobile ? "60px" : "",
               fontSize: isMobile ? "35px" : "",
+              fontFamily: "Verdana",
             }}
             placeholder="Votre prénom"
             onChange={(e) => {
@@ -81,6 +82,7 @@ class Contact extends React.Component {
             style={{
               height: isMobile ? "60px" : "",
               fontSize: isMobile ? "35px" : "",
+              fontFamily: "Verdana",
             }}
             placeholder="Votre nom"
             onChange={(e) => {
@@ -94,6 +96,7 @@ class Contact extends React.Component {
             style={{
               height: isMobile ? "60px" : "",
               fontSize: isMobile ? "35px" : "",
+              fontFamily: "Verdana",
             }}
             value={this.email}
             onChange={(e) => {
@@ -107,6 +110,7 @@ class Contact extends React.Component {
             style={{
               height: isMobile ? "200px" : "",
               fontSize: isMobile ? "35px" : "",
+              fontFamily: "Verdana",
             }}
             value={this.message}
             onChange={(e) => {

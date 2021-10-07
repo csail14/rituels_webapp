@@ -3,15 +3,17 @@ import { Redirect } from "react-router-dom";
 import { loginUser } from "../api/userApi";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
+import { isMobile } from "react-device-detect";
 
 const Title = styled.p`
   color: white;
-  font-size: 22px;
+  font-size: ${isMobile ? "50px" : "22px"};
+  margin-top: ${isMobile ? "200px" : ""};
 `;
 
 const Text = styled.p`
   color: white;
-  font-size: 18px;
+  font-size: ${isMobile ? "30px" : "18px"};
 `;
 
 export default class Login extends React.Component {
@@ -62,10 +64,18 @@ export default class Login extends React.Component {
           onSubmit={(e) => {
             this.onSubmitForm(e);
           }}
+          style={{
+            width: isMobile ? "80%" : "",
+          }}
         >
           <input
             type="text"
             placeholder="Votre mail"
+            style={{
+              height: isMobile ? "60px" : "",
+              fontSize: isMobile ? "35px" : "",
+              fontFamily: "Verdana",
+            }}
             onChange={(e) => {
               this.onChangeText("email", e.currentTarget.value);
             }}
@@ -74,12 +84,26 @@ export default class Login extends React.Component {
           <input
             type="password"
             placeholder="Votre mot de passe"
+            style={{
+              height: isMobile ? "60px" : "",
+              fontSize: isMobile ? "35px" : "",
+              fontFamily: "Verdana",
+            }}
             onChange={(e) => {
               this.onChangeText("password", e.currentTarget.value);
             }}
           />
 
-          <input type="submit" value="Enregistrer" name="Enregistrer" />
+          <input
+            style={{
+              height: isMobile ? "60px" : "",
+              fontSize: isMobile ? "35px" : "",
+              fontFamily: "Verdana",
+            }}
+            type="submit"
+            value="Enregistrer"
+            name="Enregistrer"
+          />
         </form>
 
         <Text>

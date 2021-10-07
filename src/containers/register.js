@@ -4,10 +4,12 @@ import { loginUser, saveUser } from "../api/userApi";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { validateInputField } from "../helpers/form-validator";
+import { isMobile } from "react-device-detect";
 
 const Title = styled.p`
   color: white;
-  font-size: 22px;
+  font-size: ${isMobile ? "50px" : "22px"};
+  margin-top: ${isMobile ? "200px" : ""};
 `;
 
 export default class Register extends React.Component {
@@ -120,6 +122,7 @@ export default class Register extends React.Component {
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
+            width: isMobile ? "80%" : "",
           }}
           className="b-form"
           onSubmit={(e) => {
@@ -128,6 +131,11 @@ export default class Register extends React.Component {
         >
           <input
             type="text"
+            style={{
+              height: isMobile ? "60px" : "",
+              fontSize: isMobile ? "35px" : "",
+              fontFamily: "Verdana",
+            }}
             placeholder="Votre prénom"
             onChange={(e) => {
               this.setState({ firstName: e.currentTarget.value });
@@ -135,6 +143,11 @@ export default class Register extends React.Component {
           />
           <input
             type="text"
+            style={{
+              height: isMobile ? "60px" : "",
+              fontSize: isMobile ? "35px" : "",
+              fontFamily: "Verdana",
+            }}
             placeholder="Votre nom"
             onChange={(e) => {
               this.setState({ lastName: e.currentTarget.value });
@@ -142,6 +155,11 @@ export default class Register extends React.Component {
           />
           <input
             type="text"
+            style={{
+              height: isMobile ? "60px" : "",
+              fontSize: isMobile ? "35px" : "",
+              fontFamily: "Verdana",
+            }}
             placeholder="Votre mail"
             onChange={(e) => {
               this.setState({ email: e.currentTarget.value });
@@ -151,12 +169,22 @@ export default class Register extends React.Component {
           <input
             type="password"
             placeholder="Votre mot de passe"
+            style={{
+              height: isMobile ? "60px" : "",
+              fontSize: isMobile ? "35px" : "",
+              fontFamily: "Verdana",
+            }}
             onChange={(e) => {
               this.setState({ password: e.currentTarget.value });
             }}
           />
           <input
             type="password"
+            style={{
+              height: isMobile ? "60px" : "",
+              fontSize: isMobile ? "35px" : "",
+              fontFamily: "Verdana",
+            }}
             placeholder="Confirmez votre mot de passe"
             onChange={(e) => {
               this.setState({ passwordConfirm: e.currentTarget.value });
@@ -165,7 +193,11 @@ export default class Register extends React.Component {
           <div style={{ display: "flex" }}>
             <Link
               to={"/condition"}
-              style={{ color: "white", marginTop: "15px" }}
+              style={{
+                color: "white",
+                marginTop: "15px",
+                fontSize: isMobile ? "35px" : "",
+              }}
             >
               J'accepte les Conditions générales d'utilisation
             </Link>
@@ -178,7 +210,15 @@ export default class Register extends React.Component {
             />
           </div>
 
-          <input type="submit" value="Enregistrer" name="Enregistrer" />
+          <input
+            style={{
+              height: isMobile ? "60px" : "",
+              fontSize: isMobile ? "35px" : "",
+            }}
+            type="submit"
+            value="Enregistrer"
+            name="Enregistrer"
+          />
         </form>
       </div>
     );

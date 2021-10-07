@@ -32,7 +32,7 @@ class Presentation extends React.Component {
           url={this.state.video}
           controls={true}
           playing={true}
-          width="80%"
+          width="90%"
           height="50%"
         />
       </div>

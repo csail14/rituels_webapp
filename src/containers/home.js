@@ -9,7 +9,7 @@ import androidStore from "../assets/android-app-store.png";
 import { getTextById } from "../api/textApi";
 import DOMPurify from "dompurify";
 import TextEditor from "../component/textEditor";
-import { isMobile } from "react-device-detect";
+import { isMobile, isTablet } from "react-device-detect";
 
 const GoToQG = styled.div`
   display: flex;
@@ -17,15 +17,15 @@ const GoToQG = styled.div`
   justify-content: center;
   align-items: center;
   padding: 20px;
-  height: ${isMobile ? "60px" : "40px"};
-  width: ${isMobile ? "60px" : "40px"};
+  height: ${isMobile ? "110px" : "40px"};
+  width: ${isMobile ? "110px" : "40px"};
   background-color: yellow;
   border-radius: 50%;
   position: absolute;
   font-size: ${isMobile ? "40px" : "20px"};
   bottom: ${isMobile ? "" : "10px"};
   top: ${isMobile ? "550px" : ""};
-  left: 10px;
+  left: ${isMobile ? "20px" : "10px"};
   cursor: pointer;
 `;
 
@@ -78,6 +78,7 @@ const SquareInfo = styled.div`
   max-width: ${isMobile ? "" : "500px"};
   margin: 30px;
   background-color: rgba(255, 255, 255, 0.5);
+  padding: ${isMobile ? "20px" : ""};
 `;
 const SquareInfoBottom = styled.div`
   padding: 12px;
@@ -95,6 +96,7 @@ const EditButton = styled.div`
   background-color: grey;
   color: white;
   width: fit-content;
+  min-width: 60px;
   margin: auto;
   border: solid white 1px;
   margin-bottom: 5px;
@@ -107,7 +109,7 @@ const createMarkup = (html) => {
   };
 };
 
-console.log("isMobile", isMobile);
+console.log("isMobile", isMobile, isTablet);
 class Home extends React.Component {
   constructor(props) {
     super(props);

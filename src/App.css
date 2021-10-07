@@ -86,6 +86,10 @@
   color: white;
   font-size: 20px;
 }
+.packDiv {
+  display: flex;
+  justify-content: center;
+}
 .pack {
   margin: 10px;
   border: 2px solid white;
@@ -172,7 +176,7 @@ textarea {
 
 .liste1 .web {
   color: white;
-  padding: 50px 30px;
+  padding: 50px 25px;
   font-size: 20px;
 }
 

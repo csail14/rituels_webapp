@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { forgotPassword } from "../api/userApi";
+import { isMobile } from "react-device-detect";
 
 class AskNewPassword extends React.Component {
   constructor(props) {
@@ -40,7 +41,15 @@ class AskNewPassword extends React.Component {
   render() {
     return (
       <div className="main">
-        <p className="title">Veuillez entrer votre adresse email</p>
+        <p
+          style={{
+            fontSize: isMobile ? "50px" : "",
+            marginTop: isMobile ? "150px" : "",
+          }}
+          className="title"
+        >
+          Veuillez entrer votre adresse email
+        </p>
 
         <form
           className="b-form"
@@ -51,11 +60,23 @@ class AskNewPassword extends React.Component {
           <input
             type="email"
             placeholder="email"
+            style={{
+              height: isMobile ? "60px" : "",
+              fontSize: isMobile ? "35px" : "",
+            }}
             onChange={(e) => {
               this.onchangeEmail(e.currentTarget.value);
             }}
           />
-          <input type="submit" value="Envoyer" name="Envoyer" />
+          <input
+            style={{
+              height: isMobile ? "60px" : "",
+              fontSize: isMobile ? "35px" : "",
+            }}
+            type="submit"
+            value="Envoyer"
+            name="Envoyer"
+          />
           {this.state.text !== "" && <p className="text">{this.state.text} </p>}
         </form>
       </div>

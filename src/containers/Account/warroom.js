@@ -4,13 +4,14 @@ import moment from "moment";
 import "react-agenda/build/styles.css";
 import "react-datetime/css/react-datetime.css";
 import { connect } from "react-redux";
-
 import { getAllEvent, deleteEvent } from "../../api/eventApi";
 import { loadEvent } from "../../actions/event/eventActions";
 import styled from "styled-components";
 import AddEvent from "../../component/addEvent";
 import EditEvent from "../../component/editEvent";
 import AddRecurentEvent from "../../component/addReccurentEvent";
+import { isMobile } from "react-device-detect";
+
 require("moment/locale/fr.js");
 var colors = {
   1: "rgba(102, 195, 131 , 1)",
@@ -22,12 +23,14 @@ var now = new Date();
 
 const Title = styled.p`
   color: white;
-  font-size: 22px;
+  font-size: ${isMobile ? "60px" : "22px"};
+  margin-top: ${isMobile ? "100px" : ""};
 `;
 
 const Text = styled.p`
   color: white;
   font-size: 18px;
+  font-size: ${isMobile ? "30px" : "18px"};
 `;
 
 const ThemeButtonContainer = styled.div`
@@ -132,13 +135,13 @@ const Warroom = (props) => {
     <div>
       <div>
         <div>
-          <Text
+          <Title
             onClick={() => {
               setShowHelp(true);
             }}
           >
             Comment fonctionne le quartier général ?
-          </Text>
+          </Title>
 
           <ThemeButtonContainer>
             {props.theme.allTheme.map((item) => {
@@ -153,9 +156,8 @@ const Warroom = (props) => {
         <div
           style={{
             position: "absolute",
-            height: 35,
             backgroundColor: "red",
-            padding: 8,
+            padding: 16,
             borderRadius: 12,
             right: 10,
             cursor: "pointer",
@@ -179,7 +181,7 @@ const Warroom = (props) => {
         )}
         <Text
           style={{
-            fontSize: "14px",
+            fontSize: isMobile ? "30px" : "14px",
             textDecoration: "underline",
             cursor: "pointer",
           }}

@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import { loadUserInfo } from "../../actions/user/userActions";
 import { loadEvent } from "../../actions/event/eventActions";
 import { getAllEvent } from "../../api/eventApi";
+import { isMobile } from "react-device-detect";
+
 class Admin extends React.Component {
   constructor(props) {
     super(props);
@@ -25,7 +27,15 @@ class Admin extends React.Component {
   render() {
     return (
       <div className="Main">
-        <p className="title">Désirez-vous changez de compte ?</p>
+        <p
+          className="title"
+          style={{
+            fontSize: isMobile ? "50px" : "",
+            marginTop: isMobile ? "100px" : "",
+          }}
+        >
+          Désirez-vous changez de compte ?
+        </p>
         <div style={{ display: "flex", justifyContent: "center" }}>
           {this.props.user.subuser.map((item, index) => {
             return (
@@ -38,6 +48,7 @@ class Admin extends React.Component {
                   borderRadius: "12px",
                   margin: "10px",
                   cursor: "pointer",
+                  fontSize: isMobile ? "50px" : "",
                 }}
                 onClick={() => this.changeUser(index)}
               >

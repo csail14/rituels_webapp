@@ -17,7 +17,7 @@ class Admin extends React.Component {
     this.state = {
       name: "",
       duration: "20",
-      category: "cat1",
+      category: "1",
       age_min: "",
       age_max: "",
       lang: "FR",
