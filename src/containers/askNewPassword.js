@@ -8,11 +8,21 @@ class AskNewPassword extends React.Component {
     super(props);
     this.state = {
       email: "",
-
+      isMobile: false,
       text: "",
     };
   }
 
+  componentDidMount = () => {
+    window.addEventListener("resize", this.handleResize);
+  };
+  handleResize = () => {
+    if (window.innerWidth < 720) {
+      this.setState({ isMobile: true });
+    } else {
+      this.setState({ isMobile: false });
+    }
+  };
   onchangeEmail = (value) => {
     this.setState({ email: value });
   };
@@ -43,8 +53,8 @@ class AskNewPassword extends React.Component {
       <div className="main">
         <p
           style={{
-            fontSize: isMobile ? "50px" : "",
-            marginTop: isMobile ? "150px" : "",
+            fontSize: this.state.isMobile ? "50px" : "",
+            marginTop: this.state.isMobile ? "150px" : "",
           }}
           className="title"
         >
@@ -61,8 +71,8 @@ class AskNewPassword extends React.Component {
             type="email"
             placeholder="email"
             style={{
-              height: isMobile ? "60px" : "",
-              fontSize: isMobile ? "35px" : "",
+              height: this.state.isMobile ? "60px" : "",
+              fontSize: this.state.isMobile ? "35px" : "",
             }}
             onChange={(e) => {
               this.onchangeEmail(e.currentTarget.value);
@@ -70,8 +80,8 @@ class AskNewPassword extends React.Component {
           />
           <input
             style={{
-              height: isMobile ? "60px" : "",
-              fontSize: isMobile ? "35px" : "",
+              height: this.state.isMobile ? "60px" : "",
+              fontSize: this.state.isMobile ? "35px" : "",
             }}
             type="submit"
             value="Envoyer"

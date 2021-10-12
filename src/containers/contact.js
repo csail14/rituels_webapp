@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { sendContactMessage } from "../api/userApi";
 import styled from "styled-components";
-import { isMobile } from "react-device-detect";
 
 class Contact extends React.Component {
   constructor(props) {
@@ -12,10 +11,21 @@ class Contact extends React.Component {
       firstName: null,
       lastName: null,
       message: null,
+      isMobile: false,
       mail: null,
       errorMessage: null,
     };
   }
+  componentDidMount = () => {
+    window.addEventListener("resize", this.handleResize);
+  };
+  handleResize = () => {
+    if (window.innerWidth < 720) {
+      this.setState({ isMobile: true });
+    } else {
+      this.setState({ isMobile: false });
+    }
+  };
 
   onSubmitForm = () => {
     let data = {
@@ -59,16 +69,16 @@ class Contact extends React.Component {
             this.onSubmitForm(e);
           }}
           style={{
-            width: isMobile ? "80%" : "",
-            paddingTop: isMobile ? "100px" : "",
+            width: this.state.isMobile ? "80%" : "",
+            paddingTop: this.state.isMobile ? "100px" : "",
           }}
         >
           <input
             type="text"
             value={this.firstName}
             style={{
-              height: isMobile ? "60px" : "",
-              fontSize: isMobile ? "35px" : "",
+              height: this.state.isMobile ? "60px" : "",
+              fontSize: this.state.isMobile ? "35px" : "",
               fontFamily: "Verdana",
             }}
             placeholder="Votre prénom"
@@ -80,8 +90,8 @@ class Contact extends React.Component {
             type="text"
             value={this.lastName}
             style={{
-              height: isMobile ? "60px" : "",
-              fontSize: isMobile ? "35px" : "",
+              height: this.state.isMobile ? "60px" : "",
+              fontSize: this.state.isMobile ? "35px" : "",
               fontFamily: "Verdana",
             }}
             placeholder="Votre nom"
@@ -94,8 +104,8 @@ class Contact extends React.Component {
             type="text"
             placeholder="Votre mail"
             style={{
-              height: isMobile ? "60px" : "",
-              fontSize: isMobile ? "35px" : "",
+              height: this.state.isMobile ? "60px" : "",
+              fontSize: this.state.isMobile ? "35px" : "",
               fontFamily: "Verdana",
             }}
             value={this.email}
@@ -108,8 +118,8 @@ class Contact extends React.Component {
             type="text"
             placeholder="Votre message"
             style={{
-              height: isMobile ? "200px" : "",
-              fontSize: isMobile ? "35px" : "",
+              height: this.state.isMobile ? "200px" : "",
+              fontSize: this.state.isMobile ? "35px" : "",
               fontFamily: "Verdana",
             }}
             value={this.message}
@@ -120,8 +130,8 @@ class Contact extends React.Component {
 
           <input
             style={{
-              height: isMobile ? "60px" : "",
-              fontSize: isMobile ? "35px" : "",
+              height: this.state.isMobile ? "60px" : "",
+              fontSize: this.state.isMobile ? "35px" : "",
             }}
             type="submit"
             value="Envoyer"

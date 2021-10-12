@@ -19,7 +19,6 @@ import Pack from "./containers/pack";
 import Account from "./containers/Account/myaccount";
 import Condition from "./containers/condition";
 import Register from "./containers/register";
-
 import { CloudinaryContext } from "cloudinary-react";
 
 function App() {
